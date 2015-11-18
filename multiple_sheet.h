@@ -29,6 +29,11 @@ class MultipleSheet {
     return begin() + index(n, i, j);
   }
 
+  void resize(std::size_t num, std::size_t rows, std::size_t cols) const {
+    num_ = num; rows_ = rows; cols_ = cols;
+    data_.resize(offset(num));
+  }
+
   T& operator[](std::size_t n) { return data_[n]; }
   const T& operator[](std::size_t n) const { return data_[n]; }
   T& at(std::size_t n, std::size_t i, std::size_t j) {
