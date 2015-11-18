@@ -1,5 +1,7 @@
 #include "multiple_sheet.h"
 
+#include <algorithm>
+
 using multiple_sheet::MultipleSheet;
 
 void append(MultipleSheet<int>& sheet, std::initializer_list<int> l) {
@@ -10,7 +12,7 @@ void prepend(MultipleSheet<int>& sheet, std::initializer_list<int> l) {
   sheet.prepend_row(std::begin(l), std::end(l));
 }
 
-int main() {
+void append_prepend_test() {
   MultipleSheet<int> sheet(2, 0, 2);
   assert(sheet.size() == 0);
 
@@ -48,6 +50,20 @@ int main() {
   assert(sheet.at(0, 2, 1) == 6);
   assert(sheet.at(1, 2, 0) == 7);
   assert(sheet.at(1, 2, 1) == 8);
+}
+
+void copy_test() {
+  MultipleSheet<int> sheet(1, 0, 4);
+  std::vector<int> data = {1, 2, 3, 4};
+  std::copy(data.begin(), data.end(), sheet.begin());
+  MultipleSheet<int> copied(sheet);
+  assert(sheet[0] == 1);
+  assert(sheet[1] == 2);
+  assert(sheet[2] == 3);
+  assert(sheet[3] == 4);
+}
+
+int main() {
 
   return 0;
 }

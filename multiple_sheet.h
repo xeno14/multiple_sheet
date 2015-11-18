@@ -13,6 +13,11 @@ class MultipleSheet {
  public:
   MultipleSheet(std::size_t num, std::size_t rows, std::size_t cols)
       : data_(num * rows * cols), num_(num), rows_(rows), cols_(cols) {}
+  MultipleSheet(const MultipleSheet<T>& sheet)
+      : data_(sheet.data_),
+        num_(sheet.num_),
+        rows_(sheet.rows_),
+        cols_(sheet.cols_) {}
   std::size_t offset(std::size_t n) const { return n * rows_ * cols_; }
   std::size_t index(std::size_t n, std::size_t i, std::size_t j) const {
     return offset(n) + j + i * cols_;
