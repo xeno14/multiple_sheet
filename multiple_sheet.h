@@ -25,7 +25,7 @@ class MultipleSheet {
   }
 
   std::size_t size() const { return offset(num_); }
-  void resize(std::size_t num, std::size_t rows, std::size_t cols) const {
+  void resize(std::size_t num, std::size_t rows, std::size_t cols) {
     num_ = num;
     rows_ = rows;
     cols_ = cols;
