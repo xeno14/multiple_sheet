@@ -17,7 +17,19 @@ class MultipleSheet {
   std::size_t index(std::size_t n, std::size_t i, std::size_t j) const {
     return offset(n) + j + i * cols_;
   }
+
   std::size_t size() const { return offset(num_); }
+  void resize(std::size_t num, std::size_t rows, std::size_t cols) const {
+    num_ = num;
+    rows_ = rows;
+    cols_ = cols;
+    data_.resize(offset(num));
+  }
+
+  std::size_t num() const { return num_; }
+  std::size_t rows() const { return rows_; }
+  std::size_t cols() const { return cols_; }
+
   auto begin() { return data_.begin(); }
   auto begin() const { return data_.begin(); }
   auto end() { return data_.end(); }
@@ -27,11 +39,6 @@ class MultipleSheet {
   }
   auto iterator_at(std::size_t n, std::size_t i, std::size_t j) const {
     return begin() + index(n, i, j);
-  }
-
-  void resize(std::size_t num, std::size_t rows, std::size_t cols) const {
-    num_ = num; rows_ = rows; cols_ = cols;
-    data_.resize(offset(num));
   }
 
   T& operator[](std::size_t n) { return data_[n]; }
