@@ -11,6 +11,7 @@ namespace multiple_sheet {
 template <class T>
 class MultipleSheet {
  public:
+  MultipleSheet() {}
   MultipleSheet(std::size_t num, std::size_t rows, std::size_t cols)
       : data_(num * rows * cols), num_(num), rows_(rows), cols_(cols) {}
   MultipleSheet(const MultipleSheet<T>& sheet)
