@@ -30,4 +30,19 @@ void MultipleSheet<T>::append_row(InputIterator first, InputIterator last) {
   ++rows_;
 }
 
+template <class T>
+std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
+    MultipleSheet<T>::list_index() const {
+  std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
+      res;
+  for (std::size_t n = 0; n < num(); n++) {
+    for (std::size_t i = 0; i < rows(); i++) {
+      for (std::size_t j = 0; j < cols(); j++) {
+        res.emplace_back(index(n, i, j), n, i, j);
+      }
+    }
+  }
+  return res;
+}
+
 }  // multiple_sheet

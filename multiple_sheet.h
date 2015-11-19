@@ -4,6 +4,7 @@
  */
 #pragma once
 
+#include <tuple>
 #include <vector>
 
 namespace multiple_sheet {
@@ -24,7 +25,7 @@ class MultipleSheet {
     return offset(n) + j + i * cols_;
   }
 
-  std::size_t size() const { return offset(num_); }
+  std::size_t size() const { return data_.size(); }
   void resize(std::size_t num, std::size_t rows, std::size_t cols) {
     num_ = num;
     rows_ = rows;
@@ -55,6 +56,9 @@ class MultipleSheet {
   const T& at(std::size_t n, std::size_t i, std::size_t j) const {
     return data_.at(index(n, i, j));
   }
+
+  std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
+      list_index() const;
 
   template <class InputIterator>
   void prepend_row(InputIterator first, InputIterator last);
