@@ -36,13 +36,22 @@ std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
   std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
       res;
   for (std::size_t n = 0; n < num(); n++) {
-    for (std::size_t i = 0; i < rows(); i++) {
-      for (std::size_t j = 0; j < cols(); j++) {
-        res.emplace_back(index(n, i, j), n, i, j);
-      }
-    }
+    auto tmp = list_index(n);
+    res.insert(res.end(), tmp.begin(), tmp.end());
   }
   return res;
 }
 
+template <class T>
+std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
+    MultipleSheet<T>::list_index(std::size_t n) const {
+  std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
+      res;
+  for (std::size_t i = 0; i < rows(); i++) {
+    for (std::size_t j = 0; j < cols(); j++) {
+      res.emplace_back(index(n, i, j), n, i, j);
+    }
+  }
+  return res;
+}
 }  // multiple_sheet

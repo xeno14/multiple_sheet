@@ -59,6 +59,8 @@ class MultipleSheet {
 
   std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
       list_index() const;
+  std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
+      list_index(std::size_t n) const;
 
   template <class InputIterator>
   void prepend_row(InputIterator first, InputIterator last);

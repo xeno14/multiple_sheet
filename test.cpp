@@ -65,20 +65,23 @@ void copy_test() {
 
 void list_index_test() {
   MultipleSheet<int> sheet(2, 2, 2);
-  auto list = sheet.list_index();
-  assert(list[0] == std::make_tuple(0, 0, 0, 0));
-  assert(list[1] == std::make_tuple(2, 0, 0, 1));
-  assert(list[2] == std::make_tuple(3, 0, 1, 0));
-  assert(list[3] == std::make_tuple(4, 0, 1, 1));
-  assert(list[4] == std::make_tuple(5, 1, 0, 0));
-  assert(list[5] == std::make_tuple(6, 1, 0, 1));
-  assert(list[6] == std::make_tuple(7, 1, 1, 0));
-  assert(list[7] == std::make_tuple(8, 1, 1, 1));
+  auto list0 = sheet.list_index(0);
+  assert(list0[0] == std::make_tuple(0, 0, 0, 0));
+  assert(list0[1] == std::make_tuple(1, 0, 0, 1));
+  assert(list0[2] == std::make_tuple(2, 0, 1, 0));
+  assert(list0[3] == std::make_tuple(3, 0, 1, 1));
+
+  auto list1 = sheet.list_index(1);
+  assert(list1[0] == std::make_tuple(4, 1, 0, 0));
+  assert(list1[1] == std::make_tuple(5, 1, 0, 1));
+  assert(list1[2] == std::make_tuple(6, 1, 1, 0));
+  assert(list1[3] == std::make_tuple(7, 1, 1, 1));
 }
 
 int main() {
   append_prepend_test();
   copy_test();
+  list_index_test();
 
   return 0;
 }
