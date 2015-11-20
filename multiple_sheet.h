@@ -39,8 +39,12 @@ class MultipleSheet {
 
   auto begin() { return data_.begin(); }
   auto begin() const { return data_.begin(); }
+  auto sheet_begin(std::size_t n) { return begin() + index(n, 0, 0); }
+  auto sheet_begin(std::size_t n) const { return begin() + index(n, 0, 0); }
   auto end() { return data_.end(); }
   auto end() const { return data_.end(); }
+  auto sheet_end(std::size_t n) { return begin() + index(n + 1, 0, 0); }
+  auto sheet_end(std::size_t n) const { return begin() + index(n + 1, 0, 0); }
   auto iterator_at(std::size_t n, std::size_t i, std::size_t j) {
     return begin() + index(n, i, j);
   }
