@@ -78,10 +78,20 @@ void list_index_test() {
   assert(list1[3] == std::make_tuple(7, 1, 1, 1));
 }
 
+void sheet_begin_end_test() {
+  MultipleSheet<int> sheet(2, 2, 2);
+  std::iota(sheet.begin(), sheet.end(), 0);
+  assert(*sheet.sheet_begin(0) == 0);
+  assert(*sheet.sheet_begin(1) == 4);
+  assert(sheet.sheet_end(0) == sheet.sheet_begin(1));
+  assert(sheet.sheet_end(1) == sheet.end());
+}
+
 int main() {
   append_prepend_test();
   copy_test();
   list_index_test();
+  sheet_begin_end_test();
 
   return 0;
 }
