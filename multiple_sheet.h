@@ -33,6 +33,11 @@ class MultipleSheet {
     data_.resize(offset(num));
   }
 
+  template <class U>
+  void resize(const MultipleSheet<U>& a) {
+    resize(a.num(), a.rows(), a.cols());
+  }
+
   std::size_t num() const { return num_; }
   std::size_t rows() const { return rows_; }
   std::size_t cols() const { return cols_; }
