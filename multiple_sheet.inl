@@ -58,6 +58,7 @@ std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
 template <class T>
 void MultipleSheet<T>::erase_last_row() {
   std::vector<T> next;
+  next.reserve(num_ * (rows_ - 1) * cols_);
   for (std::size_t n = 0; n < num_; n++) {
     next.insert(next.end(), iterator_at(n, 0, 0), iterator_at(n, rows_ - 1, 0));
   }

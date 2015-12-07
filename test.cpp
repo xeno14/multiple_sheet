@@ -92,7 +92,9 @@ void erase_last_row_test() {
   std::iota(sheet.begin(), sheet.end(), 0);
   assert(sheet.size() == 12);
   sheet.erase_last_row();
+  assert(sheet.num() == 3);
   assert(sheet.rows() == 1);
+  assert(sheet.cols() == 2);
   assert(sheet.size() == 6);
   assert(sheet.at(0, 0, 0) == 0);
   assert(sheet.at(0, 0, 1) == 1);
