@@ -87,11 +87,25 @@ void sheet_begin_end_test() {
   assert(sheet.sheet_end(1) == sheet.end());
 }
 
+void erase_last_row_test() {
+  MultipleSheet<int> sheet(3, 2, 2);
+  std::iota(sheet.begin(), sheet.end(), 0);
+  assert(sheet.size() == 12);
+  sheet.erase_last_row();
+  assert(sheet.rows() == 1);
+  assert(sheet.size() == 6);
+  assert(sheet.at(0, 0, 0) == 0);
+  assert(sheet.at(0, 0, 1) == 1);
+  assert(sheet.at(0, 1, 0) == 4);
+  assert(sheet.at(0, 1, 1) == 5);
+}
+
 int main() {
   append_prepend_test();
   copy_test();
   list_index_test();
   sheet_begin_end_test();
+  erase_last_row_test();
 
   return 0;
 }

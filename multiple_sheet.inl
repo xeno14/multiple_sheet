@@ -54,4 +54,15 @@ std::vector<std::tuple<std::size_t, std::size_t, std::size_t, std::size_t>>
   }
   return res;
 }
+
+template <class T>
+void MultipleSheet<T>::erase_last_row() {
+  std::vector<T> next;
+  for (std::size_t n = 0; n < num_; n++) {
+    next.insert(next.end(), iterator_at(n, 0, 0), iterator_at(n, rows_ - 1, 0));
+  }
+  data_ = std::move(next);
+  --rows_;
+}
+
 }  // multiple_sheet

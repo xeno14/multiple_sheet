@@ -85,6 +85,8 @@ class MultipleSheet {
     append_row(std::begin(r), std::end(r));
   }
 
+  void erase_last_row();
+
  private:
   std::vector<T> data_;
   std::size_t num_, rows_, cols_;
